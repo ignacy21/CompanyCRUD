@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-
+@Entity
 @Table(name = "company")
 public class Company {
 
@@ -19,4 +19,19 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Department> departments;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

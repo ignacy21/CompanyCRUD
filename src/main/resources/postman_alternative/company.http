@@ -1,0 +1,15 @@
+### post_company
+POST http://localhost:8080/api/companies/create
+Content-Type: application/json
+
+{
+  "name": "Company1",
+  "departments": [{
+    "name": "Department1"
+  }]
+}
+
+### get_companies
+GET http://localhost:8080/api/companies/getAllCompanies
+
+
