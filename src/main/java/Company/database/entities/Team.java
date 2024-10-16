@@ -2,6 +2,7 @@ package Company.database.entities;
 
 import jakarta.persistence.*;
 
+@Entity
 @Table(name = "team")
 public class Team {
 
