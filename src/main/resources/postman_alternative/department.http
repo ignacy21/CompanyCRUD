@@ -13,7 +13,7 @@ Content-Type: application/json
 {
   "name": "Department5",
   "company": {
-    "companyId": 1
+    "companyId": 2
   }
 }
 
@@ -29,13 +29,13 @@ Content-Type: application/json
   }
 }
 ### update_department
-@add_id = 1
+@add_id = 2
 PUT http://localhost:8080/api/departments/update/{{add_id}}
 Content-Type: application/json
 
 {
   "company": {
-    "companyId": 2
+    "companyId": 3
   }
 }
 

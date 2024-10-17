@@ -3,7 +3,7 @@ POST http://localhost:8080/api/companies/create
 Content-Type: application/json
 
 {
-  "name": "Company2"
+  "name": "Company3"
 }
 
 ### update_company
@@ -12,7 +12,7 @@ PUT http://localhost:8080/api/companies/update/{{update_id}}
 Content-Type: application/json
 
 {
-  "name": "Company3"
+  "name": "Company5"
 }
 
 ### get_companies
