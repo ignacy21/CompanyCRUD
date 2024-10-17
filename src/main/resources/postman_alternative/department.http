@@ -3,7 +3,7 @@ POST http://localhost:8080/api/departments/create
 Content-Type: application/json
 
 {
-  "name": "Department3"
+  "name": "Department1"
 }
 
 ### post_department
@@ -11,9 +11,9 @@ POST http://localhost:8080/api/departments/create
 Content-Type: application/json
 
 {
-  "name": "Department5",
+  "name": "Department11",
   "company": {
-    "companyId": 3
+    "companyId": 1
   }
 }
 

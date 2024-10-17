@@ -1,0 +1,42 @@
+### post_project
+POST http://localhost:8080/api/projects/create
+Content-Type: application/json
+
+{
+  "team": {
+    "teamId": 1
+  }
+}
+
+### update_project
+@update_id = 1
+PUT http://localhost:8080/api/projects/update/{{update_id}}
+Content-Type: application/json
+
+{
+  "team": {
+    "teamId": 3
+  }
+}
+### update_project
+@add_id = 3
+PUT http://localhost:8080/api/projects/update/{{add_id}}
+Content-Type: application/json
+
+{
+  "team": {
+    "teamId": 1
+  }
+}
+
+### get_projects
+GET http://localhost:8080/api/projects/getAllProjects
+
+### find_by_id
+@find_id = 1
+GET http://localhost:8080/api/projects/find/{{find_id}}
+
+### delete_project
+@delete_id = 5
+DELETE http://localhost:8080/api/projects/delete/{{delete_id}}
+

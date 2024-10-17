@@ -14,7 +14,7 @@ public class Team {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "project_id", referencedColumnName = "project_id")
     private Project project;
 
@@ -47,6 +47,9 @@ public class Team {
     }
 
     public Long departmentId() {
+        if (department == null) {
+            return null;
+        }
         return department.getDepartmentId();
     }
 

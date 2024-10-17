@@ -18,4 +18,30 @@ public class Project {
     @OneToOne(mappedBy = "project")
     private Team team;
 
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public Long getTeamId() {
+        if (team == null) {
+            return null;
+        }
+        return team.getTeamId();
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 }

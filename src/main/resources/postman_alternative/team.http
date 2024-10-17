@@ -3,7 +3,7 @@ POST http://localhost:8080/api/teams/create
 Content-Type: application/json
 
 {
-  "name": "Team3"
+  "name": "Team123"
 }
 
 ### post_team
@@ -11,9 +11,9 @@ POST http://localhost:8080/api/teams/create
 Content-Type: application/json
 
 {
-  "name": "Team100",
+  "name": "Team111",
   "department": {
-    "departmentId": 5
+    "departmentId": 1
   }
 }
 
