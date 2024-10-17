@@ -23,4 +23,38 @@ public class Department {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long companyId() {
+        if (company == null) {
+            return 0;
+        }
+        return company.getCompanyId();
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
 }

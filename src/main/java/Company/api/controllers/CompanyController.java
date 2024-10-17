@@ -26,7 +26,7 @@ public class CompanyController {
 
     @GetMapping("/find/{id}")
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Optional<Company> getCompanyById(@PathVariable Long id) {
+    public Company getCompanyById(@PathVariable Long id) {
         return companyService.getCompanyById(id);
     }
 

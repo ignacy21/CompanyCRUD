@@ -24,8 +24,10 @@ public class CompanyService {
     }
 
     @Transactional
-    public Optional<Company> getCompanyById(Long id) {
-        return companyRepository.findById(id);
+    public Company getCompanyById(Long id) {
+        return companyRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("There is no Company with id: " + id)
+        );
     }
 
     @Transactional
@@ -38,12 +40,12 @@ public class CompanyService {
         return companyRepository
                 .findById(id)
                 .map(company -> {
-                    company.setName(updatedCompany.getName());
-                    // TODO what when i want to add new departments not change it all
-                    company.setDepartments(updatedCompany.getDepartments());
+                    if (company.getName() != null) {
+                        company.setName(updatedCompany.getName());
+                    }
                     return companyRepository.save(company);
                 })
-                .orElseThrow(() -> new RuntimeException("Company not found"));
+                .orElseThrow(() -> new RuntimeException("Company not found id[%s]".formatted(id)));
     }
 
     @Transactional

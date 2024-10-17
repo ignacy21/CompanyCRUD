@@ -1,0 +1,52 @@
+### post_department
+POST http://localhost:8080/api/departments/create
+Content-Type: application/json
+
+{
+  "name": "Department2"
+}
+
+### post_department
+POST http://localhost:8080/api/departments/create
+Content-Type: application/json
+
+{
+  "name": "Department5",
+  "company": {
+    "companyId": 1
+  }
+}
+
+### update_department
+@update_id = 1
+PUT http://localhost:8080/api/departments/update/{{update_id}}
+Content-Type: application/json
+
+{
+  "name": "Department123",
+  "company": {
+    "companyId": 2
+  }
+}
+### update_department
+@add_id = 1
+PUT http://localhost:8080/api/departments/update/{{add_id}}
+Content-Type: application/json
+
+{
+  "company": {
+    "companyId": 2
+  }
+}
+
+### get_departments
+GET http://localhost:8080/api/departments/getAllDepartments
+
+### find_by_id
+@find_id = 2
+GET http://localhost:8080/api/departments/find/{{find_id}}
+
+### delete_department
+@delete_id = 2
+DELETE http://localhost:8080/api/departments/delete/{{delete_id}}
+
