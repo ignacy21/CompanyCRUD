@@ -1,12 +1,13 @@
 package Company.api.controllers;
 
-import Company.api.DTOs.CompanyDTO;
 import Company.database.entities.Company;
 import Company.services.CompanyService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/companies")
@@ -19,22 +20,23 @@ public class CompanyController {
     }
 
     @GetMapping(value = "/getAllCompanies", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CompanyDTO> getAllCompanies() {
+    public List<Company> getAllCompanies() {
         return companyService.getAllCompanies();
     }
 
-    @GetMapping(value = "/find/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CompanyDTO getCompanyById(@PathVariable Long id) {
-        return companyService.getCompanyDTOById(id);
+    @GetMapping("/find/{id}")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Company getCompanyById(@PathVariable Long id) {
+        return companyService.getCompanyById(id);
     }
 
     @PostMapping("/create")
-    public CompanyDTO createCompany(@RequestBody Company company) {
+    public Company createCompany(@RequestBody Company company) {
         return companyService.createCompany(company);
     }
 
     @PutMapping("/update/{id}")
-    public CompanyDTO updateCompany(@PathVariable Long id, @RequestBody Company company) {
+    public Company updateCompany(@PathVariable Long id, @RequestBody Company company) {
         return companyService.updateCompany(id, company);
     }
 

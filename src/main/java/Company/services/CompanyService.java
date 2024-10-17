@@ -1,41 +1,26 @@
 package Company.services;
 
-import Company.api.DTOs.CompanyDTO;
-import Company.api.mappers.CompanyMapper;
 import Company.database.entities.Company;
 import Company.database.repositories.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
 
     private final CompanyRepository companyRepository;
-    private final CompanyMapper companyMapper;
 
-    public CompanyService(CompanyRepository companyRepository, CompanyMapper companyMapper) {
+    public CompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
-        this.companyMapper = companyMapper;
     }
 
     @Transactional
-    public List<CompanyDTO> getAllCompanies() {
-        List<Company> all = companyRepository.findAll();
-        List<CompanyDTO> allDTO = new ArrayList<>();
-        for (Company company : all) {
-            allDTO.add(companyMapper.mapToDTO(company));
-        }
-        return allDTO;
-    }
-
-    @Transactional
-    public CompanyDTO getCompanyDTOById(Long id) {
-        Company company = getCompanyById(id);
-        return companyMapper.mapToDTO(company);
+    public List<Company> getAllCompanies() {
+        return companyRepository.findAll();
     }
 
     @Transactional
@@ -46,30 +31,22 @@ public class CompanyService {
     }
 
     @Transactional
-    public CompanyDTO createCompany(Company company) {
-        company.setDepartments(Collections.emptyList());
-        Company save = companyRepository.save(company);
-        return companyMapper.mapToDTO(save);
+    public Company createCompany(Company company) {
+        return companyRepository.save(company);
     }
 
     @Transactional
-    public CompanyDTO updateCompany(Long id, Company updatedCompany) {
-        Company company = companyRepository
+    public Company updateCompany(Long id, Company updatedCompany) {
+        return companyRepository
                 .findById(id)
-                .map(comp -> {
-                    if (updatedCompany.getName() != null) {
-                        comp.setName(updatedCompany.getName());
+                .map(company -> {
+                    if (company.getName() != null) {
+                        company.setName(updatedCompany.getName());
                     }
-//                    if (updatedCompany.getDepartments() != null) {
-//                        comp.setDepartments(updatedCompany.getDepartments());
-//                    }
-                    return companyRepository.save(comp);
+                    return companyRepository.save(company);
                 })
-                .orElseThrow(() -> new RuntimeException("Company not found"));
-        return companyMapper.mapToDTO(company);
+                .orElseThrow(() -> new RuntimeException("Company not found id[%s]".formatted(id)));
     }
-
-    // TODO what when i want to add new departments not change it all
 
     @Transactional
     public void deleteCompany(Long id) {

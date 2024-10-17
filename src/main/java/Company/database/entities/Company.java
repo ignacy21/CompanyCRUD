@@ -38,14 +38,4 @@ public class Company {
     public Long getCompanyId() {
         return companyId;
     }
-
-    @Override
-    public String toString() {
-        return
-                "Company{" +
-                "companyId=" + companyId +
-                ", name='" + name + '\'' +
-                ", departments=" + departments +
-                '}';
-    }
 }

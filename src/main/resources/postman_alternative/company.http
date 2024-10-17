@@ -7,12 +7,12 @@ Content-Type: application/json
 }
 
 ### update_company
-@update_id = 4
+@update_id = 2
 PUT http://localhost:8080/api/companies/update/{{update_id}}
 Content-Type: application/json
 
 {
-  "name": "Company5"
+  "name": "Company3"
 }
 
 ### get_companies
