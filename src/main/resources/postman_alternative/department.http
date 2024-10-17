@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### update_department
-@update_id = 1
+@update_id = 2
 PUT http://localhost:8080/api/departments/update/{{update_id}}
 Content-Type: application/json
 

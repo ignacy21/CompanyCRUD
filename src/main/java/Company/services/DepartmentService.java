@@ -33,8 +33,8 @@ public class DepartmentService {
 
     @Transactional
     public Department createDepartment(Department department) {
-        if (department.companyId() != 0) {
-            Company companyById = companyService.getCompanyById(department.companyId());
+        if (department.getCompanyId() != null) {
+            Company companyById = companyService.getCompanyById(department.getCompanyId());
             department.setCompany(companyById);
         }
         return departmentRepository.save(department);
@@ -42,15 +42,15 @@ public class DepartmentService {
 
     @Transactional
     public Department updateDepartment(Long id, Department updatedDepartment) {
-        long l = updatedDepartment.companyId();
+        long l = updatedDepartment.getCompanyId();
         return departmentRepository
                 .findById(id)
                 .map(depart -> {
                     if (updatedDepartment.getName() != null) {
                         depart.setName(updatedDepartment.getName());
                     }
-                    if (updatedDepartment.companyId() != 0) {
-                        Company byId = companyService.getCompanyById(updatedDepartment.companyId());
+                    if (updatedDepartment.getCompanyId() != null) {
+                        Company byId = companyService.getCompanyById(updatedDepartment.getCompanyId());
                         depart.setCompany(byId);
                     }
                     return departmentRepository.save(depart);
