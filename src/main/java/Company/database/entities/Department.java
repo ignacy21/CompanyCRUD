@@ -39,7 +39,7 @@ public class Department {
         this.name = name;
     }
 
-    public Long getCompanyId() {
+    public Long companyId() {
         if (company == null) {
             return null;
         }

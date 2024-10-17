@@ -38,4 +38,6 @@ public class Company {
     public Long getCompanyId() {
         return companyId;
     }
+
+
 }

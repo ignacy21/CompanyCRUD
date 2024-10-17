@@ -3,7 +3,7 @@ POST http://localhost:8080/api/departments/create
 Content-Type: application/json
 
 {
-  "name": "Department2"
+  "name": "Department3"
 }
 
 ### post_department
@@ -13,7 +13,7 @@ Content-Type: application/json
 {
   "name": "Department5",
   "company": {
-    "companyId": 2
+    "companyId": 3
   }
 }
 
@@ -25,17 +25,17 @@ Content-Type: application/json
 {
   "name": "Department123",
   "company": {
-    "companyId": 2
+    "companyId": 1
   }
 }
 ### update_department
-@add_id = 2
+@add_id = 3
 PUT http://localhost:8080/api/departments/update/{{add_id}}
 Content-Type: application/json
 
 {
   "company": {
-    "companyId": 3
+    "companyId": 1
   }
 }
 

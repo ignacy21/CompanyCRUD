@@ -21,4 +21,36 @@ public class Team {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Long departmentId() {
+        return department.getDepartmentId();
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

@@ -3,11 +3,11 @@ POST http://localhost:8080/api/companies/create
 Content-Type: application/json
 
 {
-  "name": "Company2"
+  "name": "Company3"
 }
 
 ### update_company
-@update_id = 2
+@update_id = 3
 PUT http://localhost:8080/api/companies/update/{{update_id}}
 Content-Type: application/json
 

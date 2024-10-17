@@ -1,0 +1,52 @@
+### post_team
+POST http://localhost:8080/api/teams/create
+Content-Type: application/json
+
+{
+  "name": "Team3"
+}
+
+### post_team
+POST http://localhost:8080/api/teams/create
+Content-Type: application/json
+
+{
+  "name": "Team100",
+  "department": {
+    "departmentId": 5
+  }
+}
+
+### update_team
+@update_id = 5
+PUT http://localhost:8080/api/teams/update/{{update_id}}
+Content-Type: application/json
+
+{
+  "name": "Team123",
+  "department": {
+    "departmentId": 3
+  }
+}
+### update_team
+@add_id = 3
+PUT http://localhost:8080/api/teams/update/{{add_id}}
+Content-Type: application/json
+
+{
+  "department": {
+    "departmentId": 1
+  }
+}
+
+### get_teams
+GET http://localhost:8080/api/teams/getAllTeams
+
+### find_by_id
+@find_id = 1
+GET http://localhost:8080/api/teams/find/{{find_id}}
+
+### delete_team
+@delete_id = 1
+DELETE http://localhost:8080/api/teams/delete/{{delete_id}}
+

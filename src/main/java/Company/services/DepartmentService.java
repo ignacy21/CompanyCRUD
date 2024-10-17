@@ -33,8 +33,8 @@ public class DepartmentService {
 
     @Transactional
     public Department createDepartment(Department department) {
-        if (department.getCompanyId() != null) {
-            Company companyById = companyService.getCompanyById(department.getCompanyId());
+        if (department.companyId() != null) {
+            Company companyById = companyService.getCompanyById(department.companyId());
             department.setCompany(companyById);
         }
         return departmentRepository.save(department);
@@ -42,18 +42,17 @@ public class DepartmentService {
 
     @Transactional
     public Department updateDepartment(Long id, Department updatedDepartment) {
-        long l = updatedDepartment.getCompanyId();
         return departmentRepository
                 .findById(id)
-                .map(depart -> {
+                .map(department -> {
                     if (updatedDepartment.getName() != null) {
-                        depart.setName(updatedDepartment.getName());
+                        department.setName(updatedDepartment.getName());
                     }
-                    if (updatedDepartment.getCompanyId() != null) {
-                        Company byId = companyService.getCompanyById(updatedDepartment.getCompanyId());
-                        depart.setCompany(byId);
+                    if (updatedDepartment.companyId() != null) {
+                        Company byId = companyService.getCompanyById(updatedDepartment.companyId());
+                        department.setCompany(byId);
                     }
-                    return departmentRepository.save(depart);
+                    return departmentRepository.save(department);
                 })
                 .orElseThrow(() -> new RuntimeException("Department not found"));
     }
