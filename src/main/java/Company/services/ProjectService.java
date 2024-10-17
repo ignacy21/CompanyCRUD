@@ -48,20 +48,31 @@ public class ProjectService {
         return projectRepository
                 .findById(id)
                 .map(project -> {
-                    if (updatedProject.getManager() != null) {
-                        project.setManager(updatedProject.getManager());
-                    }
-                    if (updatedProject.getTeamId() != null) {
-                        Team teamById = teamService.getTeamById(updatedProject.getTeamId());
-                        project.setTeam(teamById);
-                    }
-                    return projectRepository.save(project);
+                    return getProject(updatedProject, project);
                 })
                 .orElseThrow(() -> new RuntimeException("Project not found"));
+    }
+
+    private Project getProject(Project updatedProject, Project project) {
+        Long teamIdToMoveProject = updatedProject.getTeamId();
+        Long teamIdToRemoveProject = project.getTeamId();
+
+        Team teamToMoveProject = teamService.getTeamById(teamIdToMoveProject);
+        Team teamToRemoveProject = teamService.getTeamById(teamIdToRemoveProject);
+
+        project.setTeam(teamToMoveProject);
+        teamToMoveProject.setProject(project);
+        teamService.updateTeam(teamToMoveProject.getTeamId(), teamToMoveProject);
+
+        teamToRemoveProject.setProject(null);
+        teamService.updateTeam(teamIdToRemoveProject, teamToRemoveProject);
+
+        return project;
     }
 
     @Transactional
     public void deleteProject(Long id) {
         projectRepository.deleteById(id);
     }
+
 }

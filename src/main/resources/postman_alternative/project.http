@@ -15,17 +15,18 @@ Content-Type: application/json
 
 {
   "team": {
-    "teamId": 3
+    "teamId": 2
   }
 }
+
 ### update_project
-@add_id = 3
+@add_id = 1
 PUT http://localhost:8080/api/projects/update/{{add_id}}
 Content-Type: application/json
 
 {
   "team": {
-    "teamId": 1
+    "teamId": 2
   }
 }
 
