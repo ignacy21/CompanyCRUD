@@ -34,4 +34,18 @@ public class Company {
     public String getName() {
         return name;
     }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Company{" +
+                "companyId=" + companyId +
+                ", name='" + name + '\'' +
+                ", departments=" + departments +
+                '}';
+    }
 }

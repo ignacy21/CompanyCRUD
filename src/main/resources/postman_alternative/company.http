@@ -3,13 +3,26 @@ POST http://localhost:8080/api/companies/create
 Content-Type: application/json
 
 {
-  "name": "Company1",
-  "departments": [{
-    "name": "Department1"
-  }]
+  "name": "Company2"
+}
+
+### update_company
+@update_id = 4
+PUT http://localhost:8080/api/companies/update/{{update_id}}
+Content-Type: application/json
+
+{
+  "name": "Company5"
 }
 
 ### get_companies
 GET http://localhost:8080/api/companies/getAllCompanies
 
+### find_by_id
+@find_id = 1
+GET http://localhost:8080/api/companies/find/{{find_id}}
+
+### delete_company
+@delete_id = 2
+DELETE http://localhost:8080/api/companies/delete/{{delete_id}}
 
