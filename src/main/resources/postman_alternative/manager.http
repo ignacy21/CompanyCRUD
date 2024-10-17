@@ -1,0 +1,43 @@
+### post_manager
+POST http://localhost:8080/api/managers/create
+Content-Type: application/json
+
+{
+  "name": "Name5",
+  "phone": "555 555 555"
+}
+
+### post_manager
+POST http://localhost:8080/api/managers/create
+Content-Type: application/json
+
+{
+  "name": "Name1",
+  "phone": "111 222 333",
+  "project": {
+    "projectId": 1
+  }
+}
+
+### update_manager
+@update_id = 2
+PUT http://localhost:8080/api/managers/update/{{update_id}}
+Content-Type: application/json
+
+{
+  "project": {
+    "projectId": 1
+  }
+}
+
+### get_managers
+GET http://localhost:8080/api/managers/getAllManagers
+
+### find_by_id
+@find_id = 1
+GET http://localhost:8080/api/managers/find/{{find_id}}
+
+### delete_manager
+@delete_id = 5
+DELETE http://localhost:8080/api/managers/delete/{{delete_id}}
+

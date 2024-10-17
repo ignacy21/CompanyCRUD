@@ -3,7 +3,7 @@ POST http://localhost:8080/api/companies/create
 Content-Type: application/json
 
 {
-  "name": "Company1"
+  "name": "Company2"
 }
 
 ### update_company

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProjectService {
@@ -47,26 +48,32 @@ public class ProjectService {
     public Project updateProject(Long id, Project updatedProject) {
         return projectRepository
                 .findById(id)
-                .map(project -> {
-                    return getProject(updatedProject, project);
-                })
+                .map(project -> changeProjectToAnotherTeam(updatedProject, project))
                 .orElseThrow(() -> new RuntimeException("Project not found"));
     }
 
-    private Project getProject(Project updatedProject, Project project) {
-        Long teamIdToMoveProject = updatedProject.getTeamId();
-        Long teamIdToRemoveProject = project.getTeamId();
+    private Project changeProjectToAnotherTeam(Project updatedProject, Project project) {
+        if (!Objects.equals(updatedProject.getProjectId(), project.getProjectId())) {
+            Long teamIdToMoveProject = updatedProject.getTeamId();
+            Long teamIdToRemoveProject = project.getTeamId();
 
-        Team teamToMoveProject = teamService.getTeamById(teamIdToMoveProject);
-        Team teamToRemoveProject = teamService.getTeamById(teamIdToRemoveProject);
+            Team teamToMoveProject = teamService.getTeamById(teamIdToMoveProject);
+            Team teamToRemoveProject = null;
 
-        project.setTeam(teamToMoveProject);
-        teamToMoveProject.setProject(project);
-        teamService.updateTeam(teamToMoveProject.getTeamId(), teamToMoveProject);
+            if (teamIdToRemoveProject != null) {
+                teamToRemoveProject = teamService.getTeamById(teamIdToRemoveProject);
+                teamToRemoveProject.setProject(null);
+            }
 
-        teamToRemoveProject.setProject(null);
-        teamService.updateTeam(teamIdToRemoveProject, teamToRemoveProject);
 
+            project.setTeam(teamToMoveProject);
+            teamToMoveProject.setProject(project);
+            teamService.updateTeam(teamToMoveProject.getTeamId(), teamToMoveProject);
+            if (teamIdToRemoveProject != null)
+                teamService.updateTeam(teamIdToRemoveProject, teamToRemoveProject);
+            return project;
+        }
+        projectRepository.save(project);
         return project;
     }
 

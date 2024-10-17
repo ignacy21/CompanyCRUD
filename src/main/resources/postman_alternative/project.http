@@ -19,17 +19,6 @@ Content-Type: application/json
   }
 }
 
-### update_project
-@add_id = 1
-PUT http://localhost:8080/api/projects/update/{{add_id}}
-Content-Type: application/json
-
-{
-  "team": {
-    "teamId": 2
-  }
-}
-
 ### get_projects
 GET http://localhost:8080/api/projects/getAllProjects
 
