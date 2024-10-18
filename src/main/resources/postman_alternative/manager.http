@@ -12,21 +12,21 @@ POST http://localhost:8080/api/managers/create
 Content-Type: application/json
 
 {
-  "name": "Name1",
-  "phone": "111 222 333",
+  "name": "Name7",
+  "phone": "700 700 700",
   "project": {
-    "projectId": 1
+    "projectId": 4
   }
 }
 
 ### update_manager
-@update_id = 2
+@update_id = 5
 PUT http://localhost:8080/api/managers/update/{{update_id}}
 Content-Type: application/json
 
 {
   "project": {
-    "projectId": 1
+    "projectId": 5
   }
 }
 
@@ -38,6 +38,6 @@ GET http://localhost:8080/api/managers/getAllManagers
 GET http://localhost:8080/api/managers/find/{{find_id}}
 
 ### delete_manager
-@delete_id = 5
+@delete_id = 4
 DELETE http://localhost:8080/api/managers/delete/{{delete_id}}
 

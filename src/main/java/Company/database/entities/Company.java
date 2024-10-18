@@ -16,19 +16,11 @@ public class Company {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "company")
     private List<Department> departments;
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDepartments(List<Department> departments) {
-        this.departments = departments;
-    }
-
-    public List<Department> getDepartments() {
-        return departments;
     }
 
     public String getName() {

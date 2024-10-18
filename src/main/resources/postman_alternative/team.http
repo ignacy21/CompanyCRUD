@@ -11,9 +11,9 @@ POST http://localhost:8080/api/teams/create
 Content-Type: application/json
 
 {
-  "name": "Team111",
+  "name": "Team7",
   "department": {
-    "departmentId": 1
+    "departmentId": 3
   }
 }
 

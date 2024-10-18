@@ -23,6 +23,6 @@ GET http://localhost:8080/api/companies/getAllCompanies
 GET http://localhost:8080/api/companies/find/{{find_id}}
 
 ### delete_company
-@delete_id = 2
+@delete_id = 3
 DELETE http://localhost:8080/api/companies/delete/{{delete_id}}
 

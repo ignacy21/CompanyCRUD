@@ -1,5 +1,6 @@
 package Company.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,14 +21,6 @@ public class Manager {
     @OneToOne(mappedBy = "manager")
     private Project project;
 
-    public Long getManagerId() {
-        return managerId;
-    }
-
-    public void setManagerId(Long managerId) {
-        this.managerId = managerId;
-    }
-
     public String getName() {
         return name;
     }
@@ -44,6 +37,7 @@ public class Manager {
         this.phone = phone;
     }
 
+    @JsonIgnore
     public Long getProjectId() {
         if (project == null) {
             return null;

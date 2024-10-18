@@ -1,5 +1,6 @@
 package Company.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,10 +27,6 @@ public class Team {
         return teamId;
     }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
-    }
-
     public String getName() {
         return name;
     }
@@ -46,7 +43,8 @@ public class Team {
         this.project = project;
     }
 
-    public Long departmentId() {
+    @JsonIgnore
+    public Long getDepartmentId() {
         if (department == null) {
             return null;
         }

@@ -11,7 +11,7 @@ POST http://localhost:8080/api/departments/create
 Content-Type: application/json
 
 {
-  "name": "Department22",
+  "name": "Department70",
   "company": {
     "companyId": 2
   }

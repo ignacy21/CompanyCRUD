@@ -1,5 +1,6 @@
 package Company.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class Department {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "department")
     private List<Team> teams;
 
     @ManyToOne
@@ -27,10 +28,6 @@ public class Department {
         return departmentId;
     }
 
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
-
     public String getName() {
         return name;
     }
@@ -39,22 +36,16 @@ public class Department {
         this.name = name;
     }
 
-    public Long companyId() {
+    @JsonIgnore
+    public Long getCompanyId() {
         if (company == null) {
             return null;
         }
         return company.getCompanyId();
     }
 
-    public List<Team> getTeams() {
-        return teams;
-    }
-
     public void setCompany(Company company) {
         this.company = company;
     }
 
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
 }

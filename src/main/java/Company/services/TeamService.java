@@ -34,8 +34,8 @@ public class TeamService {
 
     @Transactional
     public Team createTeam(Team team) {
-        if (team.departmentId() != null) {
-            Department departmentId = departmentService.getDepartmentById(team.departmentId());
+        if (team.getDepartmentId() != null) {
+            Department departmentId = departmentService.getDepartmentById(team.getDepartmentId());
             team.setDepartment(departmentId);
         }
         return teamRepository.save(team);
@@ -49,8 +49,8 @@ public class TeamService {
                     if (updatedTeam.getName() != null) {
                         team.setName(updatedTeam.getName());
                     }
-                    if (updatedTeam.departmentId() != null) {
-                        Department departmentById = departmentService.getDepartmentById(updatedTeam.departmentId());
+                    if (updatedTeam.getDepartmentId() != null) {
+                        Department departmentById = departmentService.getDepartmentById(updatedTeam.getDepartmentId());
                         team.setDepartment(departmentById);
                     }
                     return teamRepository.save(team);

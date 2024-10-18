@@ -4,12 +4,12 @@ Content-Type: application/json
 
 {
   "team": {
-    "teamId": 1
+    "teamId": 4
   }
 }
 
 ### update_project
-@update_id = 1
+@update_id = 2
 PUT http://localhost:8080/api/projects/update/{{update_id}}
 Content-Type: application/json
 
