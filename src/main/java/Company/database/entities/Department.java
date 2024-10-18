@@ -17,7 +17,7 @@ public class Department {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Team> teams;
 
     @ManyToOne
@@ -42,6 +42,10 @@ public class Department {
             return null;
         }
         return company.getCompanyId();
+    }
+
+    public List<Team> getTeams() {
+        return teams;
     }
 
     public void setCompany(Company company) {

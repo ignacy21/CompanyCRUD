@@ -12,7 +12,7 @@ public class Project {
     @Column(name = "project_id")
     private Long projectId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName = "manager_id")
     private Manager manager;
 
@@ -21,6 +21,10 @@ public class Project {
 
     public Long getProjectId() {
         return projectId;
+    }
+
+    public Manager getManager() {
+        return manager;
     }
 
     public void setManager(Manager manager) {

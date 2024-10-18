@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "team": {
-    "teamId": 4
+    "teamId": 1
   }
 }
 

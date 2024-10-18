@@ -21,6 +21,10 @@ public class Manager {
     @OneToOne(mappedBy = "manager")
     private Project project;
 
+    public Long getManagerId() {
+        return managerId;
+    }
+
     public String getName() {
         return name;
     }

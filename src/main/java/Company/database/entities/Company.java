@@ -23,6 +23,10 @@ public class Company {
         this.name = name;
     }
 
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
     public String getName() {
         return name;
     }
